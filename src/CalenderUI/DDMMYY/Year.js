@@ -4,7 +4,7 @@ import { findYearArray } from "../Logic/findYearArray";
 import { isLeapYear } from "../Logic/findLeapYear";
 
 const Year = ({ startYear, endYear, selectedYear, setSelectedYear }) => {
-  let yearArr = findYearArray(startYear, endYear);
+  let yearArr = findYearArray(parseInt(startYear), parseInt(endYear));
 
   return (
     <select

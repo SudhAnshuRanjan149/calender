@@ -4,15 +4,18 @@ import Month from "./DDMMYY/Month";
 import Day from "./DDMMYY/Day";
 import { dayList } from "./Data/dataList";
 import { findDateArray } from "./Logic/findDateArray";
+import { getShortDate } from "./Logic/getShortDate";
+import { swapNumber } from "./Logic/swapNumber";
 
 import CreateADivOfMonths from "./Logic/CreateADivOfMonths";
 import { GetMonthDistanceFromStart } from "./Logic/GetMonthDistanceFromStart";
+import { swap } from "./Logic/swapNumber";
 
-const Calender = () => {
+import './Calender.css';
+import './CSS/variables.css';
+
+const Calender = ({ sd, ed, startYear, endYear }) => {
   var today = new Date();
-  console.log(
-    today.getDate() + " " + (today.getMonth() + 1) + " " + today.getFullYear()
-  );
 
   today = {
     date: parseInt(today.getDate()),
@@ -20,9 +23,19 @@ const Calender = () => {
     year: parseInt(today.getFullYear()),
   };
 
+  if (!startYear) {
+    startYear = parseInt(today.year) - 25;
+  }
 
-  let startYear = 1996;
-  let endYear = 2025;
+  if (!endYear) {
+    endYear = parseInt(today.year) + 25;
+  }
+
+  if (startYear > endYear) {
+    let ans = swapNumber(startYear, endYear);
+    startYear = ans[0];
+    endYear = ans[1];
+  }
 
   const Elem = [];
 
@@ -32,7 +45,12 @@ const Calender = () => {
     Elem.push("Elem-" + i);
   }
 
-  const [selectedDate, setSelectedDate] = useState(today.date);
+  const [selectedStartDate, setSelectedStartDate] = useState("");
+  const [selectedEndDate, setSelectedEndDate] = useState("");
+
+  const [startdate, setStartdate] = useState("");
+  const [enddate, setEnddate] = useState("");
+
   const [selectedMonth, setSelectedMonth] = useState(today.month);
   const [selectedYear, setSelectedYear] = useState(today.year);
   const [dateArray, setDateArray] = useState([]);
@@ -75,10 +93,33 @@ const Calender = () => {
     setDateArray(darr);
   }, []);
 
+  useEffect(() => {
+    let d = getShortDate(selectedStartDate);
+
+    setStartdate(d.toString());
+
+    sd(d.toString());
+  }, [selectedStartDate]);
+
+  useEffect(() => {
+    let d = getShortDate(selectedEndDate);
+
+    setEnddate(d.toString());
+    ed(d.toString());
+  }, [selectedEndDate]);
+
   return (
     <>
       <div className="calender-container">
         <div className="calender-header">calender</div>
+        <div className="common calender-date-box">
+          <div className="calender-show-date start">
+            {startdate != "" ? startdate : "Start Date"}
+          </div>
+          <div className="calender-show-date end">
+            {enddate != "" ? enddate : "End date"}
+          </div>
+        </div>
         <div className="common calender-year-month-container">
           <a onClick={prevYear} className="arrow-btn">
             &#10094;
@@ -112,15 +153,21 @@ const Calender = () => {
         <div className="common calender-dates-container" key={++k}>
           <div className="dates-container" key={++k}>
             {dateArray.map((month) => {
-              let emparr = [];
-
-              for (let i = 1; i < month.startDay; i++) {
-                emparr.push("");
-              }
-
               if (dateArray[0].month == selectedMonth) {
+                let emparr = [];
+                for (let i = 1; i < month.startDay; i++) {
+                  emparr.push("");
+                }
+
                 return (
                   <CreateADivOfMonths
+                    selectedStartDate={selectedStartDate}
+                    setSelectedStartDate={setSelectedStartDate}
+                    selectedEndDate={selectedEndDate}
+                    setSelectedEndDate={setSelectedEndDate}
+                    selectedMonth={selectedMonth}
+                    selectedYear={selectedYear}
+                    today={today}
                     monthid={month.month}
                     arr={month.dates}
                     emparr={emparr}

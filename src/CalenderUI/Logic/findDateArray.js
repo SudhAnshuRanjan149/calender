@@ -20,7 +20,7 @@ export const findDateArray = (year, selectedMonth) => {
     dates: [],
     month: monis.monthid,
     year: year,
-    startDay: day1,
+    startDay: day1 == 0 ? 7 : day1,
   });
 
   if (selectedMonth == 2 && isLeap) {

@@ -17,11 +17,6 @@ export const dayList = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
 export const monthdaycombinations = [
   { monthid: 1, monthName: "JAN", monthdays: 31 },
-  //   {
-  //     monthid: 2,
-  //     monthName: "FEB",
-  //     monthdays: { leapYear: 29, nonLeapYear: 28 },
-  //   },
   {
     monthid: 2,
     monthName: "FEB",
