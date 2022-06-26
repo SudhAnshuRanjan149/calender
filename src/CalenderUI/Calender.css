@@ -1,0 +1,156 @@
+/* Month */
+
+.month {
+  background-color: rgb(255, 255, 255);
+  padding: 2px 6px;
+  border: solid 1px rgb(112, 112, 112);
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.month:hover {
+  background-color: rgba(227, 227, 227, 0.558);
+}
+.month:visited {
+  background-color: pink;
+}
+
+/* Days */
+.day {
+  background-color: rgb(255, 255, 255);
+  padding: 2px 6px;
+  border: solid 1px rgb(190, 189, 189);
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+
+  width: 2.5rem;
+  text-align: center;
+  margin: 0.1rem;
+}
+
+.day:hover {
+  background-color: rgba(227, 227, 227, 0.558);
+}
+.day:visited {
+  background-color: pink;
+}
+
+/* Date */
+.date {
+  background-color: rgb(255, 255, 255);
+  padding: 2px 6px;
+  border: solid 1px rgb(220, 220, 220);
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+
+  width: 2.5rem;
+  text-align: center;
+  margin: 0.1rem;
+}
+
+.date:hover {
+  background-color: rgba(123, 172, 246, 0.558);
+}
+
+.inactive{
+	background-color: rgb(164, 164, 164);
+}
+
+
+
+/* Common */
+.common {
+  display: flex;
+  justify-content: center;
+
+  width: 19rem;
+}
+
+.dates-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  height: 9.4rem;
+
+  /* overflow: hidden; */
+
+  /* background-color: aquamarine; */
+
+
+}
+
+/* Calender */
+.calender-container {
+  /* border: 1px solid black; */
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+  text-transform: uppercase;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-weight: 500;
+}
+.calender-header {
+  margin: 0.2rem;
+  padding: 0.2rem;
+  background-color: rgb(241, 241, 241);
+  width: 100%;
+}
+.calender-year-month-container {
+  margin: 0.2rem;
+  padding: 0.2rem;
+  /* background-color: aquamarine; */
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+.arrow-btn {
+  width: 1rem;
+  padding: 0 0.2rem 0 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calender-days-container {
+  margin: 0.2rem;
+  padding: 0.1rem;
+  background-color: rgb(191, 191, 191);
+  width: 100%;
+}
+.calender-dates-container {
+  margin: 0.2rem;
+}
+
+/* *************** */
+.month-div {
+  display: flex;
+  /* background-color: blueviolet; */
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.pre{
+
+}
+.post{
+	/* background-color: brown; */
+}
+
+
