@@ -13,13 +13,7 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <input type="date" />
-        <hr />
-        <div>
-          <Calender sd={setStartdate} ed={setEnddate} />
-        </div>
-      </div>
+      <Calender sd={setStartdate} ed={setEnddate}/>
     </>
   );
 }

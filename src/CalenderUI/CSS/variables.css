@@ -1,5 +1,5 @@
 html {
-  --cal-width: 19rem;
+  --cal-width: 20rem;
 
   /* Start and End */
   --start-border: 2px solid rgb(255, 175, 146);
@@ -29,17 +29,24 @@ html {
   --font-size-1: 12px;
 
   /* margin */
-  --margin-1: 0.1rem;
-  --margin-2: 0.2rem;
-  --margin-5: 0.5rem;
+  /* --margin-1: 0.1rem; */
+  --margin-1: .5%;
+  /* --margin-2: 0.2rem; */
+  --margin-2: 1%;
+  /* --margin-5: 0.5rem; */
+  --margin-5: 1%;
 
   /* multi-margin */
   --multi-margin-1: 0.3rem 0;
+  /* --multi-margin-1: 1.5% 0; */
 
   /* padding */
-  --padding-1: 0.1rem;
-  --padding-2: 0.2rem;
+  /* --padding-1: 0.1rem; */
+  --padding-1: 0.5%;
+  /* --padding-2: 0.2rem; */
+  --padding-2: 1%;
   --padding-5: 0.5rem;
+  /* --padding-5: 1%; */
 
   /* multi-padding */
   --multi-padding-1: 0 0.2rem 0 0.2rem;

@@ -1,4 +1,7 @@
+// GLOBAL
 import React, { useState, useEffect, useRef } from "react";
+
+// LOCAL
 import Year from "./DDMMYY/Year";
 import Month from "./DDMMYY/Month";
 import Day from "./DDMMYY/Day";
@@ -6,15 +9,14 @@ import { dayList } from "./Data/dataList";
 import { findDateArray } from "./Logic/findDateArray";
 import { getShortDate } from "./Logic/getShortDate";
 import { swapNumber } from "./Logic/swapNumber";
-
 import CreateADivOfMonths from "./Logic/CreateADivOfMonths";
-import { GetMonthDistanceFromStart } from "./Logic/GetMonthDistanceFromStart";
-import { swap } from "./Logic/swapNumber";
+import { ReactComponent as MyIcon } from "./SVG/cal-icon.svg";
 
-import './Calender.css';
-import './CSS/variables.css';
+// CSS
+import "./Calender.css";
+import "./CSS/variables.css";
 
-const Calender = ({ sd, ed, startYear, endYear }) => {
+const Calender = ({ sd, ed, startYear, endYear, styleBigContainer }) => {
   var today = new Date();
 
   today = {
@@ -44,6 +46,8 @@ const Calender = ({ sd, ed, startYear, endYear }) => {
   for (let i = 1; i <= (endYear - startYear) * 12 + 12; i++) {
     Elem.push("Elem-" + i);
   }
+
+  const [show, setShow] = useState(false);
 
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [selectedEndDate, setSelectedEndDate] = useState("");
@@ -110,71 +114,79 @@ const Calender = ({ sd, ed, startYear, endYear }) => {
 
   return (
     <>
-      <div className="calender-container">
-        <div className="calender-header">calender</div>
-        <div className="common calender-date-box">
-          <div className="calender-show-date start">
-            {startdate != "" ? startdate : "Start Date"}
-          </div>
-          <div className="calender-show-date end">
-            {enddate != "" ? enddate : "End date"}
-          </div>
+      <div className="calender">
+        <div>
+          <MyIcon onClick={() => setShow(!show)} className="my-icon" />
         </div>
-        <div className="common calender-year-month-container">
-          <a onClick={prevYear} className="arrow-btn">
-            &#10094;
-          </a>
-          <div onClick={prevMonth} className="arrow-btn">
-            &#x3c;
-          </div>
 
-          <Month
-            selectedMonth={selectedMonth}
-            setSelectedMonth={setSelectedMonth}
-          />
-          <Year
-            startYear={startYear}
-            endYear={endYear}
-            selectedYear={selectedYear}
-            setSelectedYear={setSelectedYear}
-          />
-          <div onClick={nextMonth} className="arrow-btn">
-            &#x3e;
-          </div>
-          <a onClick={nextYear} className="arrow-btn">
-            &#10095;
-          </a>
-        </div>
-        <div className="common calender-days-container">
-          {dayList.map((day) => {
-            return <Day key={day} day={day} />;
-          })}
-        </div>
-        <div className="common calender-dates-container" key={++k}>
-          <div className="dates-container" key={++k}>
-            {dateArray.map((month) => {
-              if (dateArray[0].month == selectedMonth) {
-                let emparr = [];
-                for (let i = 1; i < month.startDay; i++) {
-                  emparr.push("");
-                }
+        <div style={show ? { display: "block" } : { display: "none" }}>
+          <div className="calender-container" style={styleBigContainer}>
+            <div className="calender-header">calender</div>
+            <div className="calender-date-box">
+              <div className="calender-show-date start">
+                {startdate != "" ? startdate : "Start Date"}
+              </div>
+              <div className="calender-show-date end">
+                {enddate != "" ? enddate : "End date"}
+              </div>
+            </div>
+            <div className="calender-year-month-container">
+              <a onClick={prevYear} className="arrow-btn">
+                &#10094;
+              </a>
+              <div onClick={prevMonth} className="arrow-btn">
+                &#x3c;
+              </div>
 
-                return (
-                  <CreateADivOfMonths
-                    selectedStartDate={selectedStartDate}
-                    setSelectedStartDate={setSelectedStartDate}
-                    selectedEndDate={selectedEndDate}
-                    setSelectedEndDate={setSelectedEndDate}
-                    selectedMonth={selectedMonth}
-                    selectedYear={selectedYear}
-                    today={today}
-                    monthid={month.month}
-                    arr={month.dates}
-                    emparr={emparr}
-                  />
-                );
-              }
-            })}
+              <Month
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+              />
+              <Year
+                startYear={startYear}
+                endYear={endYear}
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+              />
+              <div onClick={nextMonth} className="arrow-btn">
+                &#x3e;
+              </div>
+              <a onClick={nextYear} className="arrow-btn">
+                &#10095;
+              </a>
+            </div>
+            <div className="calender-days-container">
+              {dayList.map((day) => {
+                return <Day key={day} day={day} />;
+              })}
+            </div>
+            <div className="calender-dates-container" key={++k}>
+              <div className="dates-container" key={++k}>
+                {dateArray.map((month) => {
+                  if (dateArray[0].month == selectedMonth) {
+                    let emparr = [];
+                    for (let i = 1; i < month.startDay; i++) {
+                      emparr.push("");
+                    }
+
+                    return (
+                      <CreateADivOfMonths
+                        selectedStartDate={selectedStartDate}
+                        setSelectedStartDate={setSelectedStartDate}
+                        selectedEndDate={selectedEndDate}
+                        setSelectedEndDate={setSelectedEndDate}
+                        selectedMonth={selectedMonth}
+                        selectedYear={selectedYear}
+                        today={today}
+                        monthid={month.month}
+                        arr={month.dates}
+                        emparr={emparr}
+                      />
+                    );
+                  }
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
