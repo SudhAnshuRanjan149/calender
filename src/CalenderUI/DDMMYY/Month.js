@@ -10,6 +10,7 @@ const Month = ({ selectedMonth, setSelectedMonth }) => {
         id="1"
         value={selectedMonth}
         onChange={(e) => setSelectedMonth(e.target.value)}
+        className="month-select-box"
       >
         {monthdaycombinations.map((month) => {
           return (

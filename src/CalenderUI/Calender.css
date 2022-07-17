@@ -4,13 +4,15 @@
   box-sizing: border-box;
 }
 
-.calender {
+.calender{
   user-select: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 
   display: flex;
+  width: max-content;
+  background-color: var(--bg-color-6);
 }
 
 /* Days */
@@ -79,9 +81,9 @@
 
 /* Calender */
 .calender-container {
-  margin: var(--margin-5);
+  /* margin: var(--margin-5); */
   padding: var(--padding-5);
-  background-color: var(-bg-color-6);
+  background-color: var(--bg-color-6);
   box-shadow: var(--box-shadow-2);
   font-weight: var(--font-weight-500);
 
@@ -97,6 +99,7 @@
   height: fit-content;
 
   position: relative;
+
 }
 
 .calender-header {
@@ -214,4 +217,31 @@
   border-color: var(--border-4-color);
   margin: 0.5rem;
   cursor: pointer;
+}
+
+
+/* Extra UI */
+.date-range-box{
+	border: var(--border-1);
+	border-color: var(--border-4-color);
+	margin: .1rem;
+	padding: .2rem;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+
+/* MOnth select box */
+.month-select-box{
+	background-color: white;
+	width: 25%;
+	padding: .2rem;
+}
+
+
+/* Year select box */
+.year-select-box{
+	background-color: white;
+	width: 25%;
+	padding: .2rem;
 }

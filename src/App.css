@@ -1,7 +1,11 @@
-/* .App{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-} */
+.appContainer{
+	background-color: grey;
+	height: 100vh;
+}
 
+.Sat{
+	background-color: rgb(218, 219, 221);
+}
+.Sun{
+	background-color: rgb(218, 219, 221);
+}
